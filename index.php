@@ -86,7 +86,7 @@
  <br><br>
  Image to analyze:
  <input type="text" name="inputImage" id="inputImage"
-     value="https://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg" />
+     value="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Pierre-Auguste_Renoir_-_Paris%2C_le_quai_Malaquais.jpg/727px-Pierre-Auguste_Renoir_-_Paris%2C_le_quai_Malaquais.jpg" />
  <button onclick="processImage()">Analyze image</button>
  <br><br>
  <div id="wrapper" style="width:1020px; display:table;">
