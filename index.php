@@ -1,7 +1,7 @@
 <html>
  <head>
   <title>Analyze Sample & Registration Form</title>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
   <style type="text/css">
    body { background-color: #fff; border-top: solid 10px #000;
        color: #333; font-size: .85em; margin: 20; padding: 20;
@@ -102,8 +102,10 @@
          <img id="sourceImage" width="400" />
      </div>
  </div>
+ 
+<br><br><br>
 
- <h1><br><br><br>Register here!</h1>
+ <h1>Register here!</h1>
  <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
  <form method="post" action="index.php" enctype="multipart/form-data" >
        Name  <input type="text" name="name" id="name"/></br></br>
