@@ -2,19 +2,19 @@
  <head>
   <title>Analyze Sample & Registration Form</title>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
- <style type="text/css">
- 	body { background-color: #fff; border-top: solid 10px #000;
- 	    color: #333; font-size: .85em; margin: 20; padding: 20;
- 	    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
- 	}
- 	h1, h2, h3,{ color: #000; margin-bottom: 0; padding-bottom: 0; }
- 	h1 { font-size: 2em; }
- 	h2 { font-size: 1.75em; }
- 	h3 { font-size: 1.2em; }
- 	table { margin-top: 0.75em; }
- 	th { font-size: 1.2em; text-align: left; border: none; padding-left: 0; }
- 	td { padding: 0.25em 2em 0.25em 0em; border: 0 none; }
- </style>
+  <style type="text/css">
+   body { background-color: #fff; border-top: solid 10px #000;
+       color: #333; font-size: .85em; margin: 20; padding: 20;
+       font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+   }
+   h1, h2, h3,{ color: #000; margin-bottom: 0; padding-bottom: 0; }
+   h1 { font-size: 2em; }
+   h2 { font-size: 1.75em; }
+   h3 { font-size: 1.2em; }
+   table { margin-top: 0.75em; }
+   th { font-size: 1.2em; text-align: left; border: none; padding-left: 0; }
+   td { padding: 0.25em 2em 0.25em 0em; border: 0 none; }
+  </style>
  </head>
  <body>
    <script type="text/javascript">
@@ -35,7 +35,7 @@
          // If you use a free trial subscription key, you shouldn't need to change
          // this region.
          var uriBase =
-             "https://yas-dicodingvision.cognitiveservices.azure.com/vision/v2.0/analyze";
+             "https://southeastasia.api.cognitive.microsoft.com/vision/v2.0/analyze";
 
          // Request parameters.
          var params = {
@@ -86,7 +86,7 @@
  <br><br>
  Image to analyze:
  <input type="text" name="inputImage" id="inputImage"
-     value="http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg" />
+     value="https://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg" />
  <button onclick="processImage()">Analyze image</button>
  <br><br>
  <div id="wrapper" style="width:1020px; display:table;">
