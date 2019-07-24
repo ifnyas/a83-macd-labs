@@ -1,6 +1,6 @@
 <html>
  <head>
-  <title>Analyze Sample & Registration Form</title>
+  <title>2 Analyze Sample & Registration Form</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
   <style type="text/css">
    body { background-color: #fff; border-top: solid 10px #000;
@@ -218,10 +218,12 @@
 	//add value image url
 	$url = document.getElementById("inputImage").value;
 	$data = file_get_contents($url);
+	$new = 'newimage.jpg';
+	file_put_contents($new, $data);
 
 	// Create blob client.
 	$blobClient = BlobRestProxy::createBlobService($connectionString);
-	$fileToUpload = $data;
+	$fileToUpload = $new;
 	if (!isset($_GET["Cleanup"])) {
 		// Create container options object.
 		$createContainerOptions = new CreateContainerOptions();
