@@ -217,14 +217,17 @@
 
 	//add value image url
 	$url = document.getElementById("inputImage").value;
-	$data = file_get_contents($url);
-	$new = 'newimage.jpg';
-	file_put_contents($new, $data);
-	$test = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Pierre-Auguste_Renoir_-_Paris%2C_le_quai_Malaquais.jpg/727px-Pierre-Auguste_Renoir_-_Paris%2C_le_quai_Malaquais.jpg';
+	$imgurl = 'http://www.foodtest.ru/images/big_img/sausage_3.jpg'; 
+	$test = 'https://upload.wikimedia.org/wikipedia/commons/e/eb/Intel-logo.jpg';
 
+	$imagename= basename($imgurl);
+	if(file_exists($imagename)){continue;} 
+	$image = getimg($test); 
+	file_put_contents($imagename,$image);  
+	
 	// Create blob client.
 	$blobClient = BlobRestProxy::createBlobService($connectionString);
-	$fileToUpload = $new;
+	$fileToUpload = $imagename;
 	if (!isset($_GET["Cleanup"])) {
 		// Create container options object.
 		$createContainerOptions = new CreateContainerOptions();
