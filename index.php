@@ -217,14 +217,14 @@
 
 	//add value image url
 	$url = document.getElementById("inputImage").value;
-	$data = file_get_contents($url);
+	$data = file_get_contents($test);
 	$new = 'newimage.jpg';
 	file_put_contents($new, $data);
 	$test = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Pierre-Auguste_Renoir_-_Paris%2C_le_quai_Malaquais.jpg/727px-Pierre-Auguste_Renoir_-_Paris%2C_le_quai_Malaquais.jpg';
 
 	// Create blob client.
 	$blobClient = BlobRestProxy::createBlobService($connectionString);
-	$fileToUpload = $test;
+	$fileToUpload = $new;
 	if (!isset($_GET["Cleanup"])) {
 		// Create container options object.
 		$createContainerOptions = new CreateContainerOptions();
