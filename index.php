@@ -216,11 +216,12 @@
 	$connectionString = "DefaultEndpointsProtocol=https;AccountName=yasdicodingwebapp;AccountKey=yjbIzS7/7HS8wj1PlxPmw3ut21VogZGDGtEDB2w0p/6Q9EBSGaw7SH6IsCif4295EwFa15tWOWRmtE/YXfsWGQ==;EndpointSuffix=core.windows.net";
 
 	//add value image url
-	$sourceImageUrl = document.getElementById("inputImage").value;
+	$url = document.getElementById("inputImage").value;
+	$data = file_get_contents($url);
 
 	// Create blob client.
 	$blobClient = BlobRestProxy::createBlobService($connectionString);
-	$fileToUpload = $sourceImageUrl;
+	$fileToUpload = $data;
 	if (!isset($_GET["Cleanup"])) {
 		// Create container options object.
 		$createContainerOptions = new CreateContainerOptions();
