@@ -1,5 +1,5 @@
 <html>
-	<head>
+  <head>
 		<title>2 Analyze Sample & Registration Form</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 		<style type="text/css">
