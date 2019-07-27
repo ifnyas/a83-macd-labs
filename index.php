@@ -17,7 +17,7 @@
 		</style>
 	</head>
 	<body>
-    	<form action="test.php" method="post" enctype="multipart/form-data">
+    	<form action="index.php" method="post" enctype="multipart/form-data">
 			 <div data-role='page' id="resFileCont" >
 
 				<input type="file" name="resFile" id="resFile" value="" />
@@ -32,7 +32,7 @@
 				e.preventDefault();
 
 				$.ajax({
-				url: "test.php", // Url to which the request is send
+				url: "index.php", // Url to which the request is send
 				type: "POST",             // Type of request to be send, called as method
 				data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
 				contentType: false,       // The content type used when sending data to the server.
@@ -62,7 +62,7 @@
 			 //get posts
 			 //$fpath = $_POST["resFile"];//tried this too - no go
 			  $fpath = $_FILES["resFile"];
-			  $fname = "hello.txt";
+			  $fname = "HelloWorld.txt";
 
 			  $content = fopen($_FILES["resFile"]["tmp_name"], 'r');
 			  $blob_name = $fname;
