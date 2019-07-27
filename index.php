@@ -18,6 +18,17 @@
 	</head>
 	
 	<body>
+	
+				
+		<form action="index.php" method="post" enctype="multipart/form-data">
+			 <div data-role='page' id="resFileCont" >
+
+				<input type="file" name="resFile" id="resFile" value="" />
+				<!--<input type="text" name="name" />-->
+				<input type="submit" value="Submit" data-inline="true"/>
+			</div>
+		</form>
+		<div id="res"></div>
     	
 		<script>
 			//Azure Blob Upload Start
@@ -42,6 +53,43 @@
 			});
 			//Azure Blob Upload End
 		</script>
+		
+		<?php
+			require_once 'WindowsAzure\WindowsAzure.php';
+			 use WindowsAzure\Common\ServicesBuilder;
+			 use WindowsAzure\Common\ServiceException;
+
+			 $connectionString = "DefaultEndpointsProtocol=https;AccountName=yasdicodingwebapp;AccountKey=yjbIzS7/7HS8wj1PlxPmw3ut21VogZGDGtEDB2w0p/6Q9EBSGaw7SH6IsCif4295EwFa15tWOWRmtE/YXfsWGQ==;EndpointSuffix=core.windows.net";
+			 // Create blob REST proxy.
+			 $blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
+
+			 //$content = fopen("c:\myfile.txt", "r"); //this works when hard coded like this
+			 //$blob_name = "myblob.txt";
+			 //get posts
+			 //$fpath = $_POST["resFile"];//tried this too - no go
+			  $fpath = $_FILES["resFile"];
+			  $fname = "HelloWorld.txt";
+
+			  $content = fopen($_FILES["resFile"]["tmp_name"], 'r');
+			  $blob_name = $fname;
+
+			 try {
+				 //Upload blob
+				 $blobRestProxy->createBlockBlob("saskcontainer", $blob_name, $content);
+			 }
+			 catch(ServiceException $e){
+				// Handle exception based on error codes and messages.
+				// Error codes and messages are here: 
+				// http://msdn.microsoft.com/en-us/library/windowsazure/dd179439.aspx
+				$code = $e->getCode();
+				$error_message = $e->getMessage();
+				echo $code.": ".$error_message."<br />";
+			}
+		?>
+		
+		
+		<br><br><br>
+
 		
 		<script type="text/javascript">
 			//Azure Process Image Start
@@ -83,39 +131,6 @@
 			};
 			//Azure Process Image End
 		</script>
-
-		<?php
-			require_once 'WindowsAzure\WindowsAzure.php';
-			 use WindowsAzure\Common\ServicesBuilder;
-			 use WindowsAzure\Common\ServiceException;
-
-			 $connectionString = "DefaultEndpointsProtocol=https;AccountName=yasdicodingwebapp;AccountKey=yjbIzS7/7HS8wj1PlxPmw3ut21VogZGDGtEDB2w0p/6Q9EBSGaw7SH6IsCif4295EwFa15tWOWRmtE/YXfsWGQ==;EndpointSuffix=core.windows.net";
-			 // Create blob REST proxy.
-			 $blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
-
-			 //$content = fopen("c:\myfile.txt", "r"); //this works when hard coded like this
-			 //$blob_name = "myblob.txt";
-			 //get posts
-			 //$fpath = $_POST["resFile"];//tried this too - no go
-			  $fpath = $_FILES["resFile"];
-			  $fname = "HelloWorld.txt";
-
-			  $content = fopen($_FILES["resFile"]["tmp_name"], 'r');
-			  $blob_name = $fname;
-
-			 try {
-				 //Upload blob
-				 $blobRestProxy->createBlockBlob("saskcontainer", $blob_name, $content);
-			 }
-			 catch(ServiceException $e){
-				// Handle exception based on error codes and messages.
-				// Error codes and messages are here: 
-				// http://msdn.microsoft.com/en-us/library/windowsazure/dd179439.aspx
-				$code = $e->getCode();
-				$error_message = $e->getMessage();
-				echo $code.": ".$error_message."<br />";
-			}
-		?>
 		
 		<?php
 			$host = "yas-dicodingappserver.database.windows.net";
@@ -178,18 +193,6 @@
 			}
 		?>
 		
-		<form action="index.php" method="post" enctype="multipart/form-data">
-			 <div data-role='page' id="resFileCont" >
-
-				<input type="file" name="resFile" id="resFile" value="" />
-				<!--<input type="text" name="name" />-->
-				<input type="submit" value="Submit" data-inline="true"/>
-			</div>
-		</form>
-		<div id="res"></div>
-		
-		<br><br><br>
-
 		 <h1>Analyze image:</h1>
 		 Enter the URL to an image, then click the <strong>Analyze image</strong> button.
 		 <br><br>
