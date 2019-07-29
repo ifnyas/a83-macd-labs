@@ -43,21 +43,21 @@ $connectionString = "DefaultEndpointsProtocol=https;AccountName=yasdicodingwebap
 //$test = "HelloWorld.txt"
 
 $url = "https://upload.wikimedia.org/wikipedia/commons/e/eb/Intel-logo.jpg";
-$data = file_get_contents($url);
-$new = "newimage.jpg";
-file_put_contents($new, $data);
+//$data = file_get_contents($url);
+//$new = "newimage.jpg";
+//file_put_contents($new, $data);
 
-// $imagename= basename($imgurl);
-// if(file_exists($imagename)){continue;} 
-// $image = getimg($url); 
-// file_put_contents($imagename,$image);  
+$imagename = basename($url);
+if(file_exists($imagename)){continue;} 
+$image = file_get_contents($url); 
+file_put_contents($imagename,$image);  
 
 //$imageString = file_get_contents($url);
 //$save = file_put_contents('image.jpg',$imageString);
 
 // Create blob client.
 $blobClient = BlobRestProxy::createBlobService($connectionString);
-$fileToUpload = "newimage.jpg";
+$fileToUpload = "$imagename";
 
 if (!isset($_GET["Cleanup"])) {
     // Create container options object.
