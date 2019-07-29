@@ -53,7 +53,7 @@ file_put_contents($new, $data);
 
 // Create blob client.
 $blobClient = BlobRestProxy::createBlobService($connectionString);
-$fileToUpload = "newimage.jpg";
+$fileToUpload = $new;
 
 if (!isset($_GET["Cleanup"])) {
     // Create container options object.
