@@ -44,7 +44,7 @@ $connectionString = "DefaultEndpointsProtocol=https;AccountName=yasdicodingwebap
 
 $url = "https://upload.wikimedia.org/wikipedia/commons/e/eb/Intel-logo.jpg";
 $data = file_get_contents($url);
-$new = "newimage.jpg";
+$new = basename($url);
 file_put_contents($new, $data);
 
 //$imagename = basename($url);
