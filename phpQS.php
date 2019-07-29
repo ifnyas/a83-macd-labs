@@ -47,16 +47,16 @@ $url = "https://upload.wikimedia.org/wikipedia/commons/e/eb/Intel-logo.jpg";
 //$new = "newimage.jpg";
 //file_put_contents($new, $data);
 
-//$imagename = basename($url);
-//$image = file_get_contents($url); 
-//file_put_contents($imagename,$image);  
+$imagename = basename($url);
+$image = file_get_contents($url); 
+file_put_contents($imagename,$image);  
 
 //$imageString = file_get_contents($url);
 //$save = file_put_contents('image.jpg',$imageString);
 
 // Create blob client.
 $blobClient = BlobRestProxy::createBlobService($connectionString);
-$fileToUpload = basename($url);
+$fileToUpload = $image;
 
 if (!isset($_GET["Cleanup"])) {
     // Create container options object.
