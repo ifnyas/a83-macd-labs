@@ -107,7 +107,7 @@ if (!isset($_GET["Cleanup"])) {
         $blob = $blobClient->getBlob($containerName, $fileToUpload);
         //fpassthru($blob->getContentStream());
         $urlBlob = "https://yasdicodingwebapp.blob.core.windows.net/".$containerName."/".$fileToUpload;
-        echo "<img id="sourceImage" width="400" src="$urlBlob"/>";
+        echo "<img id="sourceImage" width="400" src=<?php "$urlBlob"; ?> />";
         
     }
     catch(ServiceException $e){
