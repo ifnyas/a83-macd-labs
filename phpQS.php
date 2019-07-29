@@ -106,7 +106,8 @@ if (!isset($_GET["Cleanup"])) {
         echo "This is the content of the blob uploaded: ";
         $blob = $blobClient->getBlob($containerName, $fileToUpload);
         //fpassthru($blob->getContentStream());
-        echo $blob->getUrl()."<br />";
+        https://yasdicodingwebapp.blob.core.windows.net/blockblobsqqmpjo/Intel-logo.jpg
+        echo "https://yasdicodingwebapp.blob.core.windows.net/".$containerName."/".$fileToUpload;
         
     }
     catch(ServiceException $e){
