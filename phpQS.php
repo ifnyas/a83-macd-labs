@@ -41,8 +41,8 @@ $connectionString = "DefaultEndpointsProtocol=https;AccountName=yasdicodingwebap
 
 //Upload Pic
 
-$url = "https://upload.wikimedia.org/wikipedia/commons/e/eb/Intel-logo.jpg";
-$test = "HelloWorld.txt"
+//$url = "https://upload.wikimedia.org/wikipedia/commons/e/eb/Intel-logo.jpg";
+//$test = "HelloWorld.txt"
 //$data = file_get_contents($url);
 //$new = "newimage.jpg";
 //file_put_contents($new, $data);
@@ -58,6 +58,7 @@ $test = "HelloWorld.txt"
 // Create blob client.
 $blobClient = BlobRestProxy::createBlobService($connectionString);
 $fileToUpload = "HelloWorld.txt";
+
 if (!isset($_GET["Cleanup"])) {
     // Create container options object.
     $createContainerOptions = new CreateContainerOptions();
