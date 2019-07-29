@@ -47,10 +47,6 @@ $data = file_get_contents($url);
 $new = basename($url);
 file_put_contents($new, $data);
 
-//$imagename = basename($url);
-//$image = file_get_contents($url); 
-//$imagefile = file_put_contents($imagename,$image);  
-
 // Create blob client.
 $blobClient = BlobRestProxy::createBlobService($connectionString);
 $fileToUpload = $new;
@@ -110,7 +106,7 @@ if (!isset($_GET["Cleanup"])) {
         echo "This is the content of the blob uploaded: ";
         $blob = $blobClient->getBlob($containerName, $fileToUpload);
         //fpassthru($blob->getContentStream());
-        print '$fileToUpload';
+        print $fileToUpload;
         echo "<br />";
     }
     catch(ServiceException $e){
