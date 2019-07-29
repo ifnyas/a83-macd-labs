@@ -1,35 +1,4 @@
 <?php
-/**----------------------------------------------------------------------------------
-* Microsoft Developer & Platform Evangelism
-*
-* Copyright (c) Microsoft Corporation. All rights reserved.
-*
-* THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
-* EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES 
-* OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-*----------------------------------------------------------------------------------
-* The example companies, organizations, products, domain names,
-* e-mail addresses, logos, people, places, and events depicted
-* herein are fictitious.  No association with any real company,
-* organization, product, domain name, email address, logo, person,
-* places, or events is intended or should be inferred.
-*----------------------------------------------------------------------------------
-**/
-/** -------------------------------------------------------------
-# Azure Storage Blob Sample - Demonstrate how to use the Blob Storage service. 
-# Blob storage stores unstructured data such as text, binary data, documents or media files. 
-# Blobs can be accessed from anywhere in the world via HTTP or HTTPS. 
-#
-# Documentation References: 
-#  - Associated Article - https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-php 
-#  - What is a Storage Account - http://azure.microsoft.com/en-us/documentation/articles/storage-whatis-account/ 
-#  - Getting Started with Blobs - https://azure.microsoft.com/en-us/documentation/articles/storage-php-how-to-use-blobs/
-#  - Blob Service Concepts - http://msdn.microsoft.com/en-us/library/dd179376.aspx 
-#  - Blob Service REST API - http://msdn.microsoft.com/en-us/library/dd135733.aspx 
-#  - Blob Service PHP API - https://github.com/Azure/azure-storage-php
-#  - Storage Emulator - http://azure.microsoft.com/en-us/documentation/articles/storage-use-emulator/ 
-#
-**/
 require_once 'vendor/autoload.php';
 require_once "./random_string.php";
 use MicrosoftAzure\Storage\Blob\BlobRestProxy;
@@ -97,6 +66,9 @@ if (!isset($_GET["Cleanup"])) {
             foreach ($result->getBlobs() as $blob)
             {
                 echo $blob->getName().": ".$blob->getUrl()."<br />";
+                $image = $blob->getUrl();
+                $imageData = base64_encode(file_get_contents($image));
+                echo '<img src="data:image/jpeg;base64,'.$imageData.'">';
             }
         
             $listBlobsOptions->setContinuationToken($result->getContinuationToken());
@@ -107,7 +79,7 @@ if (!isset($_GET["Cleanup"])) {
         $blob = $blobClient->getBlob($containerName, $fileToUpload);
         //fpassthru($blob->getContentStream());
         $urlBlob = "https://yasdicodingwebapp.blob.core.windows.net/".$containerName."/".$fileToUpload;
-        echo file_get_contents($blob);
+        //echo file_get_contents($blob);
         
     }
     catch(ServiceException $e){
