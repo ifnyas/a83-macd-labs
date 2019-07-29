@@ -75,11 +75,10 @@ if (!isset($_GET["Cleanup"])) {
         } while($result->getContinuationToken());
         echo "<br />";
         // Get blob.
-        echo "This is the content of the blob uploaded: ";
-        $blob = $blobClient->getBlob($containerName, $fileToUpload);
+        //echo "This is the content of the blob uploaded: ";
+        //$blob = $blobClient->getBlob($containerName, $fileToUpload);
         //fpassthru($blob->getContentStream());
-        $urlBlob = "https://yasdicodingwebapp.blob.core.windows.net/".$containerName."/".$fileToUpload;
-        //echo file_get_contents($blob);
+        //$urlBlob = "https://yasdicodingwebapp.blob.core.windows.net/".$containerName."/".$fileToUpload;;
         
     }
     catch(ServiceException $e){
